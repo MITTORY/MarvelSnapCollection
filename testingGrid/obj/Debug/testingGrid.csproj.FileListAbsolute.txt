@@ -20,3 +20,12 @@ C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\System.Data.S
 C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\System.Data.SQLite.xml
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\obj\Debug\testingGrid.CostAndPowerForm.resources
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\obj\Debug\testingGrid.NameForm.resources
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\EPPlus.dll
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\EPPlus.xml
+C:\Users\Aydar\source\repos\Home\testingGrid\testingGrid\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

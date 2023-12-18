@@ -403,6 +403,16 @@ namespace testingGrid.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hood_копия {
+            get {
+                object obj = ResourceManager.GetObject("Hood копия", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hulk_01 {
             get {
                 object obj = ResourceManager.GetObject("Hulk_01", resourceCulture);

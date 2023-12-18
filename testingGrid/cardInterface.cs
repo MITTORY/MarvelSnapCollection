@@ -29,11 +29,29 @@ namespace testingGrid
             declineBox.Visible = true;
         }
 
+        private void name_Click(object sender, EventArgs e)
+        {
+            NameForm nameForm = new NameForm();
+            nameForm.ShowDialog();
+        }
+
+        private void powerText_Click(object sender, EventArgs e)
+        {
+            CostAndPowerForm costAndPowerForm = new CostAndPowerForm();
+            costAndPowerForm.ShowDialog();
+        }
+
+        private void costText_Click(object sender, EventArgs e)
+        {
+            CostAndPowerForm costAndPowerForm = new CostAndPowerForm();
+            costAndPowerForm.ShowDialog();
+        }
+
         private void cardInterface_Click(object sender, EventArgs e)
         {
             if (sender is cardInterface card)
             {
-                MessageBox.Show($"{card.name.Text}\n"+
+                MessageBox.Show($"{card.name.Text}\n" +
                                                   $"Pool: {card.Pool.Text}\n" +
                                                   $"Cost: {card.costText.Text}\n" +
                                                   $"Power: {card.powerText.Text}\n" +
