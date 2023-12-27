@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -408,6 +409,28 @@ namespace testingGrid
         {
             OpenUrl("https://marvelsnap.pro/cards");
         }
+        private void showInfoButton_Click(object sender, EventArgs e)
+        {
+            // Ваш код для вывода информации о количестве карт в каждом пуле
+            StringBuilder poolInfo = new StringBuilder();
+
+            poolInfo.AppendLine("Pool Information:");
+
+            foreach (var pool in poolBox.Items)
+            {
+                string poolName = pool.ToString();
+                int cardsInPool = cardInfoList.Count(card => card.Pool == poolName);
+
+                poolInfo.AppendLine($"{poolName}: {cardsInPool} cards");
+            }
+
+            // Добавление информации об общем количестве карт
+            int totalCards = cardInfoList.Count;
+            poolInfo.AppendLine($"Total: {totalCards} cards");
+
+            // Отображение информации (пример: в MessageBox)
+            MessageBox.Show(poolInfo.ToString(), "Pool Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         //===========================================
 
 
@@ -432,37 +455,57 @@ namespace testingGrid
                 }
             }
         }
-        private void cardCostBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cardCostBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyFilters();
-            // Получаем текст из выбранного элемента в выпадающем списке
-            string cardCost = cardCostBox.SelectedItem.ToString().ToLower();
+            // Очистите панель перед загрузкой новых карточек
+            flowLayoutPanel1.Controls.Clear();
 
-            // Проходим по всем элементам в flowLayoutPanel1
-            foreach (Control control in flowLayoutPanel1.Controls)
+            // Получите выбранную стоимость
+            string selectedCost = cardCostBox.SelectedItem.ToString().ToLower();
+
+            // Отфильтруйте карточки по выбранной стоимости
+            var filteredCards = selectedCost == "all"
+                ? cardInfoList.ToList() // Если выбрана "All", показываем все карты
+                : cardInfoList.Where(card => card.Cost.ToLower().Contains(selectedCost)).ToList();
+
+            // Подготовка ProgressBar
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.MarqueeAnimationSpeed = 30;
+            progressBar1.Visible = true;
+
+            // Подождите некоторое время (загрузите данные асинхронно)
+            await Task.Delay(1000); // Замените на ваш реальный код загрузки данных
+
+            // Удалите ProgressBar и отобразите карточки после загрузки
+            progressBar1.Visible = false;
+
+            foreach (var cardInfo in filteredCards)
             {
-                // Проверяем, является ли текущий элемент картой (CardInterface)
-                if (control is cardInterface card)
-                {
-                    if (cardCost == "all" || card.costText.Text.ToLower().Contains(cardCost))
-                    {
-                        // Выводим все карты или только те, которые соответствуют выбранной стоимости
-                        card.Visible = true;
-                    }
-                    else
-                    {
-                        card.Visible = false;
-                    }
-                }
+                cardInterface customControl = new cardInterface();
+
+                customControl.name.Text = cardInfo.Name;
+                customControl.Image.Image = ByteArrayToImage(cardInfo.ImageBytes);
+                customControl.Pool.Text = cardInfo.Pool;
+                customControl.powerText.Text = cardInfo.Power;
+                customControl.costText.Text = cardInfo.Cost;
+
+                // Устанавливаем видимость acceptBox и declineBox
+                customControl.acceptBox.Visible = cardInfo.YesnoBox;
+                customControl.declineBox.Visible = !cardInfo.YesnoBox;
+
+                flowLayoutPanel1.Controls.Add(customControl);
             }
         }
-        private void cardPowerBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cardPowerBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyFilters();
-            // Получаем число из выбранного элемента в выпадающем списке
-            int selectedPower;
+            // Очистите панель перед загрузкой новых карточек
+            flowLayoutPanel1.Controls.Clear();
 
-            if (cardPowerBox.SelectedItem.ToString().ToLower() == "all")
+            // Получите выбранную силу
+            string selectedPowerText = cardPowerBox.SelectedItem.ToString().ToLower();
+
+            // Отфильтруйте карточки по выбранной силе
+            if (selectedPowerText == "all")
             {
                 // Выводим все карты, если выбран "All" в cardPowerBox
                 foreach (Control control in flowLayoutPanel1.Controls)
@@ -473,51 +516,79 @@ namespace testingGrid
                     }
                 }
             }
-            else if (int.TryParse(cardPowerBox.SelectedItem.ToString(), out selectedPower))
+            else if (int.TryParse(selectedPowerText, out int selectedPower))
             {
-                // Проходим по всем элементам в flowLayoutPanel1
-                foreach (Control control in flowLayoutPanel1.Controls)
+                // Отфильтруйте карточки по выбранной силе (числовое значение)
+                var filteredCards = cardInfoList.Where(card => Int32.TryParse(card.Power, out int cardPower) && cardPower == selectedPower).ToList();
+
+                // Подготовка ProgressBar
+                progressBar1.Style = ProgressBarStyle.Marquee;
+                progressBar1.MarqueeAnimationSpeed = 30;
+                progressBar1.Visible = true;
+
+                // Подождите некоторое время (загрузите данные асинхронно)
+                await Task.Delay(1000); // Замените на ваш реальный код загрузки данных
+
+                // Удалите ProgressBar и отобразите карточки после загрузки
+                progressBar1.Visible = false;
+
+                foreach (var cardInfo in filteredCards)
                 {
-                    // Проверяем, является ли текущий элемент картой (CardInterface)
-                    if (control is cardInterface card)
-                    {
-                        // Преобразуем текстовое представление силы карты в число
-                        if (int.TryParse(card.powerText.Text, out int cardPowerValue))
-                        {
-                            // Скрываем или отображаем карту в зависимости от соответствия поисковому запросу
-                            card.Visible = cardPowerValue == selectedPower;
-                        }
-                        else
-                        {
-                            // Обработка ситуации, если значение силы карты не является числом
-                            card.Visible = false;
-                        }
-                    }
+                    cardInterface customControl = new cardInterface();
+
+                    customControl.name.Text = cardInfo.Name;
+                    customControl.Image.Image = ByteArrayToImage(cardInfo.ImageBytes);
+                    customControl.Pool.Text = cardInfo.Pool;
+                    customControl.powerText.Text = cardInfo.Power;
+                    customControl.costText.Text = cardInfo.Cost;
+
+                    // Устанавливаем видимость acceptBox и declineBox
+                    customControl.acceptBox.Visible = cardInfo.YesnoBox;
+                    customControl.declineBox.Visible = !cardInfo.YesnoBox;
+
+                    flowLayoutPanel1.Controls.Add(customControl);
                 }
             }
         }
-        private void cardPoolBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cardPoolBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ApplyFilters();
-            // Получаем текст из выбранного элемента в выпадающем списке
+            // Очистите панель перед загрузкой новых карточек
+            flowLayoutPanel1.Controls.Clear();
+
+            // Получите выбранный пул
             string selectedPool = cardPoolBox.SelectedItem.ToString().ToLower();
 
-            // Проходим по всем элементам в flowLayoutPanel1
-            foreach (Control control in flowLayoutPanel1.Controls)
+            // Отфильтруйте карточки по выбранному пулу
+            var filteredCards = selectedPool == "all"
+                ? cardInfoList.ToList() // Если выбран "All", показываем все карты
+                : cardInfoList.Where(card => card.Pool.ToLower() == selectedPool).ToList();
+
+            // Подготовка ProgressBar
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.MarqueeAnimationSpeed = 30;
+            progressBar1.Visible = true;
+
+            // Подождите некоторое время (загрузите данные асинхронно)
+            await Task.Delay(1000); // Замените на ваш реальный код загрузки данных
+
+            // Удалите ProgressBar и отобразите карточки после загрузки
+            progressBar1.Visible = false;
+
+            foreach (var cardInfo in filteredCards)
             {
-                // Проверяем, является ли текущий элемент картой (CardInterface)
-                if (control is cardInterface card)
-                {
-                    if (selectedPool == "all" || card.Pool.Text.ToLower() == selectedPool)
-                    {
-                        // Выводим все карты или только те, которые соответствуют выбранному пулу
-                        card.Visible = true;
-                    }
-                    else
-                    {
-                        card.Visible = false;
-                    }
-                }
+                cardInterface customControl = new cardInterface();
+
+                customControl.name.Text = cardInfo.Name;
+                customControl.Image.Image = ByteArrayToImage(cardInfo.ImageBytes);
+                customControl.Pool.Text = cardInfo.Pool;
+                customControl.powerText.Text = cardInfo.Power;
+                customControl.costText.Text = cardInfo.Cost;
+
+                // Устанавливаем видимость acceptBox и declineBox
+                customControl.acceptBox.Visible = cardInfo.YesnoBox;
+                customControl.declineBox.Visible = !cardInfo.YesnoBox;
+
+                flowLayoutPanel1.Controls.Add(customControl);
             }
         }
         //===========================================
@@ -657,29 +728,6 @@ namespace testingGrid
             {
                 return Image.FromStream(stream);
             }
-        }
-
-        private void showInfoButton_Click(object sender, EventArgs e)
-        {
-            // Ваш код для вывода информации о количестве карт в каждом пуле
-            StringBuilder poolInfo = new StringBuilder();
-
-            poolInfo.AppendLine("Pool Information:");
-
-            foreach (var pool in poolBox.Items)
-            {
-                string poolName = pool.ToString();
-                int cardsInPool = cardInfoList.Count(card => card.Pool == poolName);
-
-                poolInfo.AppendLine($"{poolName}: {cardsInPool} cards");
-            }
-
-            // Добавление информации об общем количестве карт
-            int totalCards = cardInfoList.Count;
-            poolInfo.AppendLine($"Total: {totalCards} cards");
-
-            // Отображение информации (пример: в MessageBox)
-            MessageBox.Show(poolInfo.ToString(), "Pool Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

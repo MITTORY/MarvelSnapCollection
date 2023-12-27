@@ -67,6 +67,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.settingsDefaultButton = new System.Windows.Forms.PictureBox();
             this.showInfoButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -238,6 +239,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -395,7 +397,7 @@
             this.cardCostBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cardCostBox.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cardCostBox.FormattingEnabled = true;
-            this.cardCostBox.Location = new System.Drawing.Point(210, 34);
+            this.cardCostBox.Location = new System.Drawing.Point(208, 35);
             this.cardCostBox.Name = "cardCostBox";
             this.cardCostBox.Size = new System.Drawing.Size(121, 24);
             this.cardCostBox.TabIndex = 28;
@@ -407,7 +409,7 @@
             this.cardPowerBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cardPowerBox.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F);
             this.cardPowerBox.FormattingEnabled = true;
-            this.cardPowerBox.Location = new System.Drawing.Point(337, 34);
+            this.cardPowerBox.Location = new System.Drawing.Point(335, 35);
             this.cardPowerBox.Name = "cardPowerBox";
             this.cardPowerBox.Size = new System.Drawing.Size(121, 24);
             this.cardPowerBox.TabIndex = 29;
@@ -419,7 +421,7 @@
             this.cardPoolBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cardPoolBox.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F);
             this.cardPoolBox.FormattingEnabled = true;
-            this.cardPoolBox.Location = new System.Drawing.Point(464, 34);
+            this.cardPoolBox.Location = new System.Drawing.Point(462, 35);
             this.cardPoolBox.Name = "cardPoolBox";
             this.cardPoolBox.Size = new System.Drawing.Size(121, 24);
             this.cardPoolBox.TabIndex = 30;
@@ -580,6 +582,14 @@
             this.showInfoButton.UseVisualStyleBackColor = true;
             this.showInfoButton.Click += new System.EventHandler(this.showInfoButton_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(41, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(159, 23);
+            this.progressBar1.TabIndex = 45;
+            this.progressBar1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,6 +673,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox settingsDefaultButton;
         private System.Windows.Forms.Button showInfoButton;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
