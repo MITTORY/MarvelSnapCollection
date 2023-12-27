@@ -26,108 +26,24 @@ namespace testingGrid.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int StarterProgress {
+        public int FormBackColor {
             get {
-                return ((int)(this["StarterProgress"]));
+                return ((int)(this["FormBackColor"]));
             }
             set {
-                this["StarterProgress"] = value;
+                this["FormBackColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CollectionProgress {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BackgroundImageFilePath {
             get {
-                return ((int)(this["CollectionProgress"]));
+                return ((string)(this["BackgroundImageFilePath"]));
             }
             set {
-                this["CollectionProgress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RecruitProgress {
-            get {
-                return ((int)(this["RecruitProgress"]));
-            }
-            set {
-                this["RecruitProgress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Series1Progress {
-            get {
-                return ((int)(this["Series1Progress"]));
-            }
-            set {
-                this["Series1Progress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Series2Progress {
-            get {
-                return ((int)(this["Series2Progress"]));
-            }
-            set {
-                this["Series2Progress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Series3Progress {
-            get {
-                return ((int)(this["Series3Progress"]));
-            }
-            set {
-                this["Series3Progress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Series4Progress {
-            get {
-                return ((int)(this["Series4Progress"]));
-            }
-            set {
-                this["Series4Progress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Series5Progress {
-            get {
-                return ((int)(this["Series5Progress"]));
-            }
-            set {
-                this["Series5Progress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int TotalProgress {
-            get {
-                return ((int)(this["TotalProgress"]));
-            }
-            set {
-                this["TotalProgress"] = value;
+                this["BackgroundImageFilePath"] = value;
             }
         }
     }

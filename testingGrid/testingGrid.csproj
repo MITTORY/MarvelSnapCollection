@@ -86,61 +86,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cardInterface.cs">
+    <Compile Include="Main\cardInterface.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="cardInterface.Designer.cs">
+    <Compile Include="Main\cardInterface.Designer.cs">
       <DependentUpon>cardInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="chooseBackCard.cs">
+    <Compile Include="Main\chooseBackCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="chooseBackCard.Designer.cs">
+    <Compile Include="Main\chooseBackCard.Designer.cs">
       <DependentUpon>chooseBackCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CostAndPowerForm.cs">
+    <Compile Include="Main\createForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CostAndPowerForm.Designer.cs">
-      <DependentUpon>CostAndPowerForm.cs</DependentUpon>
+    <Compile Include="Main\createForm.Designer.cs">
+      <DependentUpon>createForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Main\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Main\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Main\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
+    <Compile Include="Main\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="NameForm.cs">
+    <Compile Include="Main\Program.cs" />
+    <Compile Include="Main\variantsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NameForm.Designer.cs">
-      <DependentUpon>NameForm.cs</DependentUpon>
+    <Compile Include="Main\variantsForm.Designer.cs">
+      <DependentUpon>variantsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\variantsInterface.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\variantsInterface.Designer.cs">
+      <DependentUpon>variantsInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="cardInterface.resx">
+    <EmbeddedResource Include="Main\cardInterface.resx">
       <DependentUpon>cardInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="chooseBackCard.resx">
+    <EmbeddedResource Include="Main\chooseBackCard.resx">
       <DependentUpon>chooseBackCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CostAndPowerForm.resx">
-      <DependentUpon>CostAndPowerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Main\createForm.resx">
+      <DependentUpon>createForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Main\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
+    <EmbeddedResource Include="Main\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NameForm.resx">
-      <DependentUpon>NameForm.cs</DependentUpon>
+    <EmbeddedResource Include="Main\variantsForm.resx">
+      <DependentUpon>variantsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\variantsInterface.resx">
+      <DependentUpon>variantsInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -427,6 +436,7 @@
   <ItemGroup>
     <None Include="Resources\Hood копия.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
